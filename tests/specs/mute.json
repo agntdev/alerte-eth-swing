@@ -1,19 +1,114 @@
 [
   {
-    "name": "/mute",
+    "name": "/mute shows duration options",
     "steps": [
       {
+        "send": { "text": "/mute" },
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Temporarily disable alerts for 1h/4h/24h"
+              "text": "🔇 Pause les alertes pendant combien de temps ?"
             }
           }
-        ],
-        "send": {
-          "text": "/mute"
-        }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "mute menu button shows duration options",
+    "steps": [
+      {
+        "send": { "callback": "mute:show" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "🔇 Pause les alertes pendant combien de temps ?"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "selecting 1h mute confirms",
+    "steps": [
+      {
+        "send": { "text": "/mute" },
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "🔇 Pause les alertes pendant combien de temps ?"
+            }
+          }
+        ]
+      },
+      {
+        "send": { "callback": "mute:1h" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "🔇 Alertes en pause. Vous recevrez de nouveau des signaux après la pause."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "selecting 4h mute confirms",
+    "steps": [
+      {
+        "send": { "text": "/mute" },
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "🔇 Pause les alertes pendant combien de temps ?"
+            }
+          }
+        ]
+      },
+      {
+        "send": { "callback": "mute:4h" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "🔇 Alertes en pause. Vous recevrez de nouveau des signaux après la pause."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "selecting 24h mute confirms",
+    "steps": [
+      {
+        "send": { "text": "/mute" },
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "🔇 Pause les alertes pendant combien de temps ?"
+            }
+          }
+        ]
+      },
+      {
+        "send": { "callback": "mute:24h" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "🔇 Alertes en pause. Vous recevrez de nouveau des signaux après la pause."
+            }
+          }
+        ]
       }
     ]
   }

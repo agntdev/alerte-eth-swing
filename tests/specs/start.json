@@ -7,7 +7,7 @@
         "expect": [
           {
             "method": "sendMessage",
-            "payload": { "text": "👋 Welcome! Tap a button below to get started." }
+            "payload": { "text": "👋 Bienvenue ! Je surveille le prix de l'ETH et je vous envoie des alertes d'achat/vente quand les indicateurs techniques le confirment.\n\nStratégie par défaut : EMA (20/50), RSI (14), MACD et ATR — calibrée pour du swing trading avec un petit capital (~20$).\n\nAppuyez sur un bouton ci-dessous pour commencer." }
           }
         ]
       }

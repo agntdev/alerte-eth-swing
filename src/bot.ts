@@ -6,7 +6,8 @@ import { createBot, type BotContext } from "./toolkit/index.js";
 // bot grows. Durable domain data must NOT live here — use the toolkit's
 // persistent storage (see AGENTS.md).
 export interface Session {
-  // example: step?: "awaiting_amount";
+  /** Mute expiry timestamp (unix-ms). Alerts suppressed while now() < mute_expiry. */
+  mute_expiry?: number;
 }
 
 export type Ctx = BotContext<Session>;
@@ -44,7 +45,7 @@ export async function buildBot(token: string) {
     bot.use(mod.default);
   }
 
-  bot.on("message", (ctx) => ctx.reply("Sorry, I didn't understand that. Try /help."));
+  bot.on("message", (ctx) => ctx.reply("Désolé, je n'ai pas compris. Essayez /help."));
 
   return bot;
 }

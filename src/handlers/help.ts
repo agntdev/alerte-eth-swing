@@ -2,17 +2,21 @@ import { Composer } from "grammy";
 import type { Ctx } from "../bot.js";
 import { inlineButton, inlineKeyboard } from "../toolkit/index.js";
 
-// /help — plain-language explanation for non-technical users. This bot is
-// button-driven: tell the user to tap /start to open the menu rather than listing
-// slash commands. The same text is shown when the user taps the Help button on the
-// main menu (`menu:help`). Enhance the copy for your specific bot; keep it short.
+// /help — plain-language explanation for non-technical users.
 const composer = new Composer<Ctx>();
 
 const HELP =
-  "ℹ️ Tap /start to open the menu, then pick what you want from the buttons.\n\n" +
-  "Everything in this bot is reachable by tapping — you don't need to remember any commands.";
+  "ℹ️ Ce bot surveille le prix de l'ETH et vous envoie des alertes " +
+  "quand les indicateurs techniques détectent une bonne opportunité.\n\n" +
+  "🔍 Comment ça marche :\n" +
+  "• Les signaux « Bon achat » ou « Bon vente » s'affichent avec " +
+  "le prix, la confiance et un stop-loss recommandé.\n" +
+  "• Vous pouvez marquer un signal comme traité avec le bouton « ✅ Accusé ».\n\n" +
+  "🔇 Besoin de pause ? Utilisez « Pause alertes » depuis le menu.\n" +
+  "📋 Pour un résumé des dernières 24h, tapez /summary.\n\n" +
+  "Tout est accessible depuis le menu — tapez /start pour y revenir.";
 
-const backToMenu = inlineKeyboard([[inlineButton("⬅️ Back to menu", "menu:main")]]);
+const backToMenu = inlineKeyboard([[inlineButton("⬅️ Retour au menu", "menu:main")]]);
 
 composer.command("help", async (ctx) => {
   await ctx.reply(HELP);

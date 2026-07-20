@@ -1,19 +1,33 @@
 [
   {
-    "name": "/summary",
+    "name": "/summary shows empty state",
     "steps": [
       {
+        "send": { "text": "/summary" },
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Request daily signal summary"
+              "text": "📋 Aucun signal sur les dernières 24h."
             }
           }
-        ],
-        "send": {
-          "text": "/summary"
-        }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "summary menu button shows same text",
+    "steps": [
+      {
+        "send": { "callback": "summary:show" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "📋 Aucun signal sur les dernières 24h."
+            }
+          }
+        ]
       }
     ]
   }
