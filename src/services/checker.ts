@@ -25,14 +25,18 @@ const CHECK_INTERVAL_MS = 5 * 60 * 1000; // every 5 minutes
 export function startSignalChecker(bot: Bot<any>): () => void {
   let running = true;
 
-  const timer = setInterval(async () => {
+  const check = async () => {
     if (!running) return;
     try {
       await checkAndAlert(bot);
     } catch (err) {
       console.error("[signal-checker] error:", err);
     }
-  }, CHECK_INTERVAL_MS);
+  };
+
+  check();
+
+  const timer = setInterval(check, CHECK_INTERVAL_MS);
 
   // Unref so the timer never keeps the process alive
   if (timer.unref) timer.unref();
