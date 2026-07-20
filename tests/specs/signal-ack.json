@@ -5,9 +5,9 @@
       {
         "expect": [
           {
-            "method": "sendMessage",
+            "method": "editMessageText",
             "payload": {
-              "text": "Mark signal as acted upon"
+              "text": "✅ Signal marqué comme traité."
             }
           }
         ],
